@@ -115,7 +115,6 @@ def translate_subtitle(file, target_lang, source_lang, progress=gr.Progress()):
 # Create Gradio interface
 with gr.Blocks(
     title="Subtitle Translator",
-    theme=gr.themes.Soft(primary_hue="blue"),
     css="""
     .rtl { direction: rtl; text-align: right; }
     """
