@@ -113,19 +113,13 @@ def translate_subtitle(file, target_lang, source_lang, progress=gr.Progress()):
 
 
 # Create Gradio interface
-with gr.Blocks(
-    title="Subtitle Translator",
-    css="""
-    .rtl { direction: rtl; text-align: right; }
-    """
-) as app:
+with gr.Blocks() as app:
 
     gr.Markdown(
         """
         # 🎬 Subtitle Translator
         ### أداة ترجمة ملفات الترجمة - متوافقة مع Aegisub
-        """,
-        elem_classes="rtl"
+        """
     )
 
     with gr.Row():
@@ -162,8 +156,7 @@ with gr.Blocks(
             status_text = gr.Textbox(
                 label="📊 الحالة",
                 lines=5,
-                interactive=False,
-                elem_classes="rtl"
+                interactive=False
             )
 
     # Connect button to function
@@ -180,8 +173,7 @@ with gr.Blocks(
         - الأداة تحافظ على جميع تنسيقات ASS (المواقع، الألوان، التأثيرات)
         - للحصول على أفضل نتائج، حدد لغة المصدر يدوياً
         - الصيغ المدعومة: ASS, SRT, SSA
-        """,
-        elem_classes="rtl"
+        """
     )
 
 
