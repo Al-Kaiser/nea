@@ -3,7 +3,7 @@
 Subtitle Translator - واجهة ويب محسنة
 متوافقة مع Aegisub (ASS/SRT)
 """
-
+ 
 import gradio as gr
 import pysubs2
 from deep_translator import GoogleTranslator
@@ -189,7 +189,7 @@ def translate_subtitle(file, target_lang, source_lang, provider, api_key, dual_s
 
         # Filter dialogue lines
         dialogue_lines = [event for event in subs.events if not event.is_comment]
-
+ 
         if not dialogue_lines:
             return None, "❌ لا توجد نصوص للترجمة في الملف", ""
 
@@ -268,14 +268,14 @@ def translate_subtitle(file, target_lang, source_lang, provider, api_key, dual_s
 
 # Create Gradio interface
 with gr.Blocks() as app:
-
+ 
     gr.Markdown(
         """
         # 🎬 Subtitle Translator
         ### أداة ترجمة ملفات الترجمة - متوافقة مع Aegisub
         """
     )
-
+ 
     with gr.Row():
         with gr.Column():
             file_input = gr.File(
@@ -296,7 +296,7 @@ with gr.Blocks() as app:
                 value="ar",
                 label="🌐 لغة الترجمة"
             )
-
+ 
             source_lang = gr.Dropdown(
                 choices=[("تلقائي", "auto")] + get_language_choices(),
                 value="auto",
@@ -336,12 +336,12 @@ with gr.Blocks() as app:
                 variant="primary",
                 size="lg"
             )
-
+ 
         with gr.Column():
             output_file = gr.File(
                 label="📥 تحميل الملف المترجم"
             )
-
+ 
             status_text = gr.Textbox(
                 label="📊 الحالة",
                 lines=8,
@@ -366,7 +366,7 @@ with gr.Blocks() as app:
         inputs=[file_input, target_lang, source_lang, provider, api_key, dual_subs, batch_size],
         outputs=[output_file, status_text, translated_preview]
     )
-
+ 
     gr.Markdown(
         """
         ---
@@ -377,8 +377,8 @@ with gr.Blocks() as app:
         - حجم دفعة أكبر = سرعة أعلى
         """
     )
-
-
+ 
+ 
 if __name__ == "__main__":
     app.launch(
         server_name="0.0.0.0",
